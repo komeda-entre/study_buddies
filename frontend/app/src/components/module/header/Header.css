@@ -1,0 +1,69 @@
+/* Header.css */
+.header {
+    background-color: white;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.company-name-div{
+    margin-left:60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.company-name{
+    color: #4169E1;
+    font-family: Inter;
+    font-size: 13px;
+    text-decoration: none;
+}
+.signin{
+    color: #515151;
+    font-family: ABeeZee;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    margin-right: 70px;
+    line-height: normal;
+    text-decoration: none;
+}
+.signup{
+    color: #515151;
+    font-family: ABeeZee;
+    font-size: 15px;
+    font-style: normal;
+    margin-right: 80px;
+    font-weight: 400;
+    text-decoration: none;
+    line-height: normal;
+}
+.main{
+    height:500px;
+}
+.main-image{
+    width: 100%;
+}
+.mypage {
+    color: #515151;
+    font-family: ABeeZee;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    margin-right: 70px;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.logout {
+    color: #515151;
+    font-family: ABeeZee;
+    font-size: 15px;
+    font-style: normal;
+    margin-right: 80px;
+    font-weight: 400;
+    text-decoration: none;
+    line-height: normal;
+}

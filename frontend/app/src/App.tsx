@@ -4,9 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Home from "components/pages/Home"
 import SignUp from "components/pages/SignUp"
 import SignIn from "components/pages/SignIn"
+import MyPage from "components/pages/MyPage"
 
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
+import Header from "components/module/header/Header"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -28,7 +30,6 @@ const App: React.FC = () => {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser()
-
       if (res?.data.isLogin === true) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data)
@@ -65,12 +66,17 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Header 
+        isSignedIn = {isSignedIn}
+        currentUser = {currentUser} 
+      />
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
         <Switch>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/" component={Home} />
           <Private>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/mypage" component={MyPage} />
           </Private>
         </Switch>
       </AuthContext.Provider>
