@@ -15,5 +15,6 @@ FactoryBot.define do
     confirmation_token    { SecureRandom.hex(10) } # 10文字のランダムなトークンを生成
     confirmation_sent_at  { Time.now } # 確認メールの送信時刻
     unconfirmed_email     { nil } # 未確認のメールアドレスは初期値としてnil
+    admin                 {false}
   end
 end
