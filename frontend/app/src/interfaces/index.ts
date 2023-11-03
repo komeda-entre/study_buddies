@@ -25,3 +25,8 @@ export interface User {
     updated_at: Date
     admin: boolean
 }
+
+// 課題作成
+export interface TaskParams {
+    title: string
+}

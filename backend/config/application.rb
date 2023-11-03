@@ -26,7 +26,7 @@ module Myapp
     config.generators do |g|
       g.test_framework :rspec, view_specs: false, helper_specs: false, routing_specs: false
     end
-    config.session_store :cookie_store, key: '_interslice_session'
+    config.session_store :cookie_store, key: '_interslice_session', expire_after: 1.hour
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
   end

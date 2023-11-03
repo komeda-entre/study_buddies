@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import Home from "components/pages/Home";
+import Home from "components/pages/Home/Home";
 import { AuthContext } from 'App';
 
 // テストデータの生成用のユーティリティ関数

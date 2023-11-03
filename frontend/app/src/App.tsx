@@ -1,14 +1,16 @@
 import React, { useState, useEffect, createContext } from "react"
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 
-import Home from "components/pages/Home"
-import SignUp from "components/pages/SignUp"
-import SignIn from "components/pages/SignIn"
-import MyPage from "components/pages/MyPage"
+import Home from "components/pages/Home/Home"
+import SignUp from "components/pages/SignUp/SignUp"
+import SignIn from "components/pages/SignIn/SignIn"
+import MyPage from "components/pages/MyPage/MyPage"
+import CreateTask from "components/pages/CreateTask/CreateTask"
 
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
 import Header from "components/module/header/Header"
+import IndexTasks from "components/pages/IndexTasks/IndexTasks"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -52,15 +54,15 @@ const App: React.FC = () => {
 
   // ユーザーが認証済みかどうかでルーティングを決定
   // 未認証だった場合は「/signin」ページに促す
-  const Private = ({ children }: { children: React.ReactElement }) => {
+  const Private = ({ children }: { children: React.ReactNode }) => {
     if (!loading) {
       if (isSignedIn) {
-        return children
+        return <>{children}</>;
       } else {
-        return <Redirect to="/signin" />
+        return <Redirect to="/signin" />;
       }
     } else {
-      return <></>
+      return <></>;
     }
   }
 
@@ -75,8 +77,10 @@ const App: React.FC = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/tasks" component={IndexTasks} />
           <Private>
             <Route exact path="/mypage" component={MyPage} />
+            <Route exact path="/create_task" component={CreateTask} />
           </Private>
         </Switch>
       </AuthContext.Provider>

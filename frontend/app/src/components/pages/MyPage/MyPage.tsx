@@ -2,26 +2,15 @@ import React, { FormEvent, useContext } from "react";
 
 import { AuthContext } from "App";
 import { signOut } from "lib/api/auth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const MyPage: React.FC = () => {
     const { isSignedIn, currentUser } = useContext(AuthContext);
     const history = useHistory();
 
-    const handleSignInSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-
-        try {
-            const res = await signOut();
-            console.log(res);
-            history.push("/signin");
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
     return (
         <div>
+            <h1>a</h1>
             {isSignedIn && currentUser ? (
                 <div>
                     <h1>Signed in successfully!</h1>

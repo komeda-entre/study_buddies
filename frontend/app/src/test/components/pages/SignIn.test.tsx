@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom"; // For extended DOM matchers
 import Cookies from "js-cookie";
-import SignIn from "components/pages/SignIn"; // テスト対象のコンポーネント
+import SignIn from "components/pages/SignIn/SignIn"; // テスト対象のコンポーネント
 import { AuthContext } from "App"; // もし必要ならば、Mockも考慮してimport
 import { MemoryRouter } from "react-router-dom";
 
