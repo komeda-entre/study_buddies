@@ -1,0 +1,39 @@
+#email {
+    padding: 0 14% 0 2%;
+    display: block;
+    width:83%;
+    height: 35px;
+}
+#password {
+    padding: 0 14% 0 2%;
+    display: block;
+    width: 83%;
+    height: 35px;
+}
+.input-wrapper {
+    padding: auto;
+    margin: auto;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+/* パスワード表示/非表示アイコンの位置を調整します。 */
+.PasswordReveal {
+    position: absolute;
+    right: 5%;
+    /* パスワードフィールドの右端からの位置を設定 */
+    top: 50%;
+    /* 上端からの位置を設定 */
+    transform: translateY(-50%);
+    /* アイコンを垂直方向の中心に配置 */
+    cursor: pointer;
+    /* マウスカーソルを手の形に変更 */
+}
+
+/* FontAwesome アイコンのスタイル */
+.PasswordReveal i {
+    color: #333;
+    /* アイコンの色を設定 */
+    font-size: 1rem;
+    /* アイコンのサイズを設定 */
+}

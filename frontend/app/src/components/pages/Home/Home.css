@@ -8,10 +8,12 @@
     opacity: 0.8;
     width: 100%;
     opacity: 0.8;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .sub-title-frame{
     float: right;
-    margin-right: 14%;
+    margin-right: 10%;
     margin-top: 50px;
     background-color: rgba(250, 250, 250, 0.7);
     padding: 20px;

@@ -1,0 +1,29 @@
+Arguments: 
+  /usr/local/Cellar/node/18.5.0/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js add @fortawesome/fontawesome-free
+
+PATH: 
+  /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/share/dotnet:/opt/devkitpro/tools/bin:~/.dotnet/tools:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/panmamkoki/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/panmamkoki/src/flutter/bin:/Users/panmamkoki/src/flutter/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  18.5.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@fortawesome%2ffontawesome-free: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:141543:19)
+      at listOnTimeout (node:internal/timers:564:17)
+      at process.processTimers (node:internal/timers:507:7)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

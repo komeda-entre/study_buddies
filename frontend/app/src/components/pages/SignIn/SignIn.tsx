@@ -3,11 +3,18 @@ import { useContext, useState, FormEvent } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { signIn } from "lib/api/auth";
 import { AuthContext } from "App";
+import './SignIn.css';
+import InputForm from "components/module/inputForm/InputForm";
+import FlashMessage from "components/module/FlashMessage/FlashMessage";
+
 
 const SignIn: React.FC = () => {
     const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passError, setPassError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [submitError, setSubmitError] = useState("");
 
     const history = useHistory();
 
@@ -22,6 +29,25 @@ const SignIn: React.FC = () => {
     const handleSignInSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const params = generateParams();
+        const { email, password } = params;
+        let errors: string[] = [];
+        setEmailError("")
+        setSubmitError("")
+        setPassError("")
+
+        if (!email) {
+            setEmailError("メールアドレスを入力してください" )
+            errors.push('メールアドレスを記入してください');
+        }
+        if (!password) {
+            setPassError("パスワードを入力してください")
+            errors.push('パスワードを入力してください');
+        }
+        if (errors.length > 0) {
+            console.error(errors.join(' ')); 
+            return;
+        }
+        
 
         try {
             const res = await signIn(params);
@@ -36,38 +62,47 @@ const SignIn: React.FC = () => {
                 history.push("/");
             }
         } catch (e) {
+            setSubmitError("メールアドレスまたはパスワードが違います")
             console.log(e);
         }
     };
     return (
         <>
-            <p>サインインページです</p>
-            <form>
-                <div>
-                    <label htmlFor="email">メールアドレス</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+            <div className="signin_body">
+                <div className="signin_content">
+                    <form className="signin_form">
+                        <div className = "email_form">
+                            <InputForm
+                                labelName = "メールアドレス"
+                                name= "email"
+                                value  = {email}
+                                onChange={setEmail}
+                                errorMessage={emailError}
+                            />
+                        </div>
+                        <div className="password_form">
+                            <InputForm
+                                labelName="パスワード"
+                                name="password"
+                                value={password}
+                                onChange={setPassword}
+                                errorMessage={passError}
+                                type= 'password'
+                            />
+                            <Link to="#" className="forget_password">パスワードを忘れた方はこちら</Link>
+                        </div>
+                        <FlashMessage
+                            errorMessage={submitError}
+                        />
+                        <button type="submit" onClick={(e) => handleSignInSubmit(e)} className="signinButton" >
+                            ログイン
+                        </button>
+                    </form>
+                    <div className="not_account">
+                        <p>アカウントをお持ちでない方　　<Link to="/signup">会員登録</Link></p>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="password">パスワード</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit" onClick={(e) => handleSignInSubmit(e)}>
-                    Submit
-                </button>
-            </form>
-            <Link to="/signup">サインアップへ</Link>
+            </div>
         </>
     );
 };

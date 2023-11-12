@@ -25,38 +25,76 @@ h1 {
 }
 
 .nav-section{
-    width: 60%;
-    height: 100%;
+    width: 55%;
+    /* height: 100%; */
 }
 .config_section{
-    width: 20%;
+    width: 25%;
 }
 .tasklist {
     float: left;
-    color: #515151;
-    font-family: ABeeZee;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    margin-left: 10%;
-    line-height: normal;
-    text-decoration: none;
-}
-.tasklist:hover {
-    color: red
+    margin-left: 17%;
+    
 }
 
 .helperlist {
     float: right;
-    color: #515151;
+    margin-right: 20%;
+}
+
+.link {
+    font-weight: 400;
+    color: black;
     font-family: ABeeZee;
     font-size: 15px;
     font-style: normal;
-    margin-right: 40%;
-    font-weight: 400;
-    text-decoration: none;
+    position: relative;
     line-height: normal;
+    text-decoration: none;
 }
-.helperlist:hover {
-    color: red
+
+.link::after {
+    position: absolute;
+    left: -10%;
+    content: '';
+    height: 3px;
+    background: #4169E1;
+    position: absolute;
+    width: 120%;
+    bottom: -15px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.link:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.signin {
+    text-decoration: none;
+    float: right;
+    background-color: #4169E1;
+    color: #fff;
+    margin-right: 40px;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+.signup {
+    text-decoration: none;
+    margin-right: 40px;
+    float: right;
+    background-color: #4169E1;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 8px;
+
+}
+.button:hover{
+    background-color: #4875FA;
+}
+ul{
+    margin: auto;
 }

@@ -11,6 +11,7 @@ import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
 import Header from "components/module/header/Header"
 import IndexTasks from "components/pages/IndexTasks/IndexTasks"
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {

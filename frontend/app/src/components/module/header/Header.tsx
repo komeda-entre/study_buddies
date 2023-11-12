@@ -32,22 +32,22 @@ const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
             <div className="nav-section">
                 <nav>
                     <ul>
-                        <Link to="/tasks" className="tasklist">課題一覧</Link>
-                        <Link to="#" className="helperlist">お助け人</Link>
+                        <Link to="/tasks" className="tasklist link">課題一覧</Link>
+                        <Link to="#" className="helperlist link">お助け人一覧</Link>
                     </ul>
                 </nav>
             </div>
             <div className="config_section">
                 {isSignedIn && currentUser ? (
-                    <ul>
+                    <div>
                         <Link to="/mypage" className="mypage">マイページ</Link>
                         <Link to="#" onClick={(e) => handleSignOutSubmit(e)} className="logout">ログアウト</Link>
-                    </ul>
+                    </div>
                 ) : (
-                    <ul>
-                        <Link to="/signin" className="signin">ログイン</Link>
-                        <Link to="/signup" className="signup">会員登録</Link>
-                    </ul>
+                    <div>
+                        <Link to="/signin" className="signin button">ログイン</Link>
+                        <Link to="/signup" className="signup button">会員登録</Link>
+                    </div>
                 )}                
             </div>
         </header>
