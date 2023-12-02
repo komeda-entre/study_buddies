@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
-
-  <body>
-    <p>パスワード再設定メール</p>
-    <p>以下のページよりパスワードの再設定を行なってください</p>
-    <p><%= link_to 'Change my password', "#{ENV['FRONTEND_LINK']}/auth/password?reset_password_token=#{@token}" %></p>
-  </body>
-</html>
+<p><%= @user %>様、example.comへようこそ。</p>
+<p>===============================================</p>
+<p>example.comへのサインアップが成功しました。</p>
+<p>このサイトにログインするには、
+<p><%= link_to 'Confirm my account',  "#{ENV['FRONTEND_LINK']}/user_confirmation?confirmation_token=#{@token}" %></p>
+<p>これでテストは終了です！おめでとう！</p>

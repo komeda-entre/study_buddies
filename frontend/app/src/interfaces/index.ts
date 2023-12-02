@@ -40,3 +40,6 @@ export interface PasswordResetParams {
     passwordConfirmation: string
     resetPasswordToken?: string | null;
 }
+export interface UserConfirmationParams {
+    confirmationToken?: string | null;
+}

@@ -14,6 +14,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import SendResetMail from "components/pages/SendResetMail/SendResetMail"
 import PasswordReset from "components/pages/PasswordReset/PasswordReset"
 import SignUp from "components/pages/SignUp/SignUp"
+import UserConfirmation from "components/pages/UserConfirmation/UserConfirmation"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -39,7 +40,7 @@ const App: React.FC = () => {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data)
 
-        console.log(res?.data.data)
+        console.log(res)
       } else {
         console.log("No current user")
       }
@@ -78,6 +79,7 @@ const App: React.FC = () => {
           <Route path="/tasks" element={<IndexTasks />} />
           <Route path="/send_reset_mail" element={<SendResetMail />} />
           <Route path="/password" element={<PasswordReset />} />
+          <Route path="/user_confirmation" element={<UserConfirmation />} />
           <Route path="/mypage" element={
             <PrivateRoute>
               <MyPage />

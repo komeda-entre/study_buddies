@@ -4,13 +4,14 @@ import { signUp } from "lib/api/auth";
 import InputForm from "components/module/inputForm/InputForm";
 import './SignUp.css';
 import FlashMessage from "components/module/FlashMessage/FlashMessage";
+import Cookies from "js-cookie";
 
 const SignUp: React.FC = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const confirmSuccessUrl = "http://localhost:4000";
+    const confirmSuccessUrl = "http://localhost:4000/confirmation";
     const [emailError, setEmailError] = useState("");
     const [passError, setPassError] = useState("");
     const [passconfError, setPassConfError] = useState("");
@@ -60,6 +61,11 @@ const SignUp: React.FC = () => {
         try {
             const res = await signUp(params);
             console.log(res);
+            if (res.status === 200) {
+                Cookies.set("_access_token", res.headers["access-token"]);
+                Cookies.set("_client", res.headers["client"]);
+                Cookies.set("_uid", res.headers["uid"]);
+            }
             alert("confirm email");
         } catch (e) {
             setSubmitError("会員登録ができませんでした")

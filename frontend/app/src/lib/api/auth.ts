@@ -1,7 +1,7 @@
 import client from "lib/api/client"
 import Cookies from "js-cookie"
 
-import { SignUpParams, SignInParams, SendResetMailParams, PasswordResetParams } from "interfaces/index"
+import { SignUpParams, SignInParams, SendResetMailParams, PasswordResetParams, UserConfirmationParams } from "interfaces/index"
 
 // サインアップ（新規アカウント作成）
 export const signUp = (params: SignUpParams) => {
@@ -45,4 +45,19 @@ export const sendResetEmail = (params: SendResetMailParams) => {
 export const onPasswordReset = (params: PasswordResetParams) => {
     console.log(params)
     return client.put("auth/password", params)
+}
+
+// ユーザーメール認証
+export const userConfirmation = (params: UserConfirmationParams) => {
+    console.log(params);
+
+    if (params.confirmationToken) {
+        const queryParams = new URLSearchParams({
+            'confirmation_token': params.confirmationToken
+        }).toString();
+
+        return client.get(`auth/confirmation?${queryParams}`);
+    } else {
+        throw new Error('確認トークンが提供されていません');
+    }
 }
