@@ -1,8 +1,7 @@
 import React, { useState, useEffect, createContext } from "react"
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Navigate, Routes } from "react-router-dom"
 
 import Home from "components/pages/Home/Home"
-import SignUp from "components/pages/SignUp/SignUp"
 import SignIn from "components/pages/SignIn/SignIn"
 import MyPage from "components/pages/MyPage/MyPage"
 import CreateTask from "components/pages/CreateTask/CreateTask"
@@ -12,6 +11,9 @@ import { User } from "interfaces/index"
 import Header from "components/module/header/Header"
 import IndexTasks from "components/pages/IndexTasks/IndexTasks"
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import SendResetMail from "components/pages/SendResetMail/SendResetMail"
+import PasswordReset from "components/pages/PasswordReset/PasswordReset"
+import SignUp from "components/pages/SignUp/SignUp"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -55,35 +57,38 @@ const App: React.FC = () => {
 
   // ユーザーが認証済みかどうかでルーティングを決定
   // 未認証だった場合は「/signin」ページに促す
-  const Private = ({ children }: { children: React.ReactNode }) => {
-    if (!loading) {
-      if (isSignedIn) {
-        return <>{children}</>;
-      } else {
-        return <Redirect to="/signin" />;
-      }
-    } else {
-      return <></>;
+  const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+    if (loading) {
+      return <></>; // ローディング中の表示（必要に応じて変更）
     }
-  }
+    return isSignedIn ? children : <Navigate to="/signin" />;
+  };
 
   return (
     <Router>
-      <Header 
-        isSignedIn = {isSignedIn}
-        currentUser = {currentUser} 
+      <Header
+        isSignedIn={isSignedIn}
+        currentUser={currentUser}
       />
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
-        <Switch>
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/tasks" component={IndexTasks} />
-          <Private>
-            <Route exact path="/mypage" component={MyPage} />
-            <Route exact path="/create_task" component={CreateTask} />
-          </Private>
-        </Switch>
+        <Routes>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/tasks" element={<IndexTasks />} />
+          <Route path="/send_reset_mail" element={<SendResetMail />} />
+          <Route path="/password" element={<PasswordReset />} />
+          <Route path="/mypage" element={
+            <PrivateRoute>
+              <MyPage />
+            </PrivateRoute>
+          } />
+          <Route path="/create_task" element={
+            <PrivateRoute>
+              <CreateTask />
+            </PrivateRoute>
+          } />
+        </Routes>
       </AuthContext.Provider>
     </Router>
   )

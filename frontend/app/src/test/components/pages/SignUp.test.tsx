@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import SignUp from 'components/pages/SignUp/SignUp';  // 適切なパスに修正してください。
+import SignUp from 'components/pages/SignUp/SignUpEmail/SignUpEmail';  // 適切なパスに修正してください。
 import { MemoryRouter } from 'react-router-dom';
 
 // APIモック

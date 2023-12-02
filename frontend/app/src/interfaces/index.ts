@@ -30,3 +30,13 @@ export interface User {
 export interface TaskParams {
     title: string
 }
+
+export interface SendResetMailParams {
+    email: string
+    redirect_url?: string
+}
+export interface PasswordResetParams {
+    password: string
+    passwordConfirmation: string
+    resetPasswordToken?: string | null;
+}

@@ -1,6 +1,6 @@
 import React, { FormEvent, useContext } from 'react';
 import './Header.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'lib/api/auth';
 import { User } from 'interfaces';
 
@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
-    const history = useHistory();
+    const navigate= useNavigate();
 
     const handleSignOutSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
         try {
             const res = await signOut();
             console.log(res);
-            history.push("/signin");
+            navigate("/signin");
         } catch (e) {
             console.log(e);
         }

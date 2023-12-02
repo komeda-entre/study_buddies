@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { useContext, useState, FormEvent } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "lib/api/auth";
 import { AuthContext } from "App";
 import './SignIn.css';
@@ -16,7 +16,7 @@ const SignIn: React.FC = () => {
     const [emailError, setEmailError] = useState("");
     const [submitError, setSubmitError] = useState("");
 
-    const history = useHistory();
+    const navigate= useNavigate();
 
     const generateParams = () => {
         const signInParams = {
@@ -59,7 +59,7 @@ const SignIn: React.FC = () => {
                 setIsSignedIn(true);
                 setCurrentUser(res.data.data);
 
-                history.push("/");
+                navigate("/");
             }
         } catch (e) {
             setSubmitError("メールアドレスまたはパスワードが違います")
@@ -71,6 +71,7 @@ const SignIn: React.FC = () => {
             <div className="signin_body">
                 <div className="signin_content">
                     <form className="signin_form">
+                        <h1>ログイン</h1>
                         <div className = "email_form">
                             <InputForm
                                 labelName = "メールアドレス"
@@ -89,7 +90,7 @@ const SignIn: React.FC = () => {
                                 errorMessage={passError}
                                 type= 'password'
                             />
-                            <Link to="#" className="forget_password">パスワードを忘れた方はこちら</Link>
+                            <Link to="/send_reset_mail" className="forget_password">パスワードを忘れた方はこちら</Link>
                         </div>
                         <FlashMessage
                             errorMessage={submitError}

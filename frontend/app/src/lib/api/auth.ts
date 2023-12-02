@@ -1,7 +1,7 @@
 import client from "lib/api/client"
 import Cookies from "js-cookie"
 
-import { SignUpParams, SignInParams } from "interfaces/index"
+import { SignUpParams, SignInParams, SendResetMailParams, PasswordResetParams } from "interfaces/index"
 
 // サインアップ（新規アカウント作成）
 export const signUp = (params: SignUpParams) => {
@@ -34,4 +34,15 @@ export const getCurrentUser = () => {
             "uid": Cookies.get("_uid")
         }
     })
+}
+
+// パスワード再設定メール送信関数
+export const sendResetEmail = (params: SendResetMailParams) => {
+    return client.post("auth/password", params)
+}
+
+// パスワード再設定実行関数
+export const onPasswordReset = (params: PasswordResetParams) => {
+    console.log(params)
+    return client.put("auth/password", params)
 }

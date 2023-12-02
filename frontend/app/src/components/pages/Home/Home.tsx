@@ -2,11 +2,11 @@ import React, { FormEvent, useContext } from "react";
 import './Home.css';
 import { AuthContext } from "App";
 import { signOut } from "lib/api/auth";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
     const { isSignedIn, currentUser } = useContext(AuthContext);
-    const history = useHistory();
+    const navigate= useNavigate();
 
     const handleSignOutSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         try {
             const res = await signOut();
             console.log(res);
-            history.push("/signin");
+            navigate("/signin");
         } catch (e) {
             console.log(e);
         }

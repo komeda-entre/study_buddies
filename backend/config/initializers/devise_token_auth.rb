@@ -53,6 +53,7 @@ DeviseTokenAuth.setup do |config|
 
   # Makes it possible to use custom uid column
   # config.other_uid = "foo"
+  config.require_client_password_reset_token = true
 
   # By default, only Bearer Token authentication is implemented out of the box.
   # If, however, you wish to integrate with legacy Devise authentication, you can

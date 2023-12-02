@@ -2,11 +2,11 @@ import React, { FormEvent, useContext } from "react";
 
 import { AuthContext } from "App";
 import { signOut } from "lib/api/auth";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyPage: React.FC = () => {
     const { isSignedIn, currentUser } = useContext(AuthContext);
-    const history = useHistory();
+    const navigate= useNavigate();
 
     return (
         <div>

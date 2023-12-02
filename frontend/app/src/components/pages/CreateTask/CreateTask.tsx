@@ -1,12 +1,12 @@
 import React, { FormEvent, useContext, useState } from "react";
 
 import { AuthContext } from "App";
-import { Redirect, useHistory } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { createTask } from "lib/api/task";
 
 const CreateTask: React.FC = () => {
     const { isSignedIn, currentUser } = useContext(AuthContext);
-    const history = useHistory();
+    const navigate= useNavigate();
     const [title, setTitle] = useState("");
 
     const generateParams = () => {
@@ -25,13 +25,13 @@ const CreateTask: React.FC = () => {
                 console.log(res)
                 if (res.status === 201) {
                     console.log("201ok")
-                    history.push("/");
+                    navigate("/");
                 }
             } catch (e) {
                 console.log(e);
             }
         } else {
-            return <Redirect to="/signin" />;
+            return <Navigate to="/signin" />;
         }
     };
     return (
