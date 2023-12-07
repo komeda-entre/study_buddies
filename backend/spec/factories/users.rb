@@ -16,5 +16,7 @@ FactoryBot.define do
     confirmation_sent_at  { Time.now } # 確認メールの送信時刻
     unconfirmed_email     { nil } # 未確認のメールアドレスは初期値としてnil
     admin                 {false}
+    corporation           {false}
+    university            {"university"}
   end
 end

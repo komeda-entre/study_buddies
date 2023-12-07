@@ -13,7 +13,7 @@ class Api::V1::Auth::ConfirmationsController <  DeviseTokenAuth::ConfirmationsCo
         render_create_success
       else
           logger.error "バリデーションエラー: #{@resource.errors.full_messages}"
-          raise ActionController::RoutingError, 'Not Found'
+          render json: { errors: @resource.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
