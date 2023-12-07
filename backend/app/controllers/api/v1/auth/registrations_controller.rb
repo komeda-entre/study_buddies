@@ -3,6 +3,6 @@ class Api::V1::Auth::RegistrationsController <  DeviseTokenAuth::RegistrationsCo
 
     def sign_up_params
         # サインアップ時に登録できるカラムを指定
-        params.permit(:email, :password, :password_confirmation)
+        params.permit(:name, :university, :email, :password, :password_confirmation,:corporation)
     end
 end

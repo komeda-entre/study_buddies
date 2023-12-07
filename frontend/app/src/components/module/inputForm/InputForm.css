@@ -10,7 +10,19 @@
     width: 83%;
     height: 35px;
 }
+#name {
+    padding: 0 14% 0 2%;
+    display: block;
+    width: 83%;
+    height: 35px;
+}
 #passwordConfirmation {
+    padding: 0 14% 0 2%;
+    display: block;
+    width: 83%;
+    height: 35px;
+}
+#university {
     padding: 0 14% 0 2%;
     display: block;
     width: 83%;

@@ -1,8 +1,11 @@
 // サインアップ
 export interface SignUpParams {
+    name: string
+    university: string | null;
     email: string
     password: string
     passwordConfirmation: string
+    corporation: boolean
 }
 
 // サインイン

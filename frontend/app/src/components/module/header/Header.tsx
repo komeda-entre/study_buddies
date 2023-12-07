@@ -27,13 +27,12 @@ const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
     return (
         <header className="header">
             <div className="company-name-div">
-                <Link to="/" className="company-name"><h1>Study<br />Buddies</h1></Link>
+                <Link to="/" className="company-name"><h1>🔳 Irace</h1></Link>
             </div>
             <div className="nav-section">
                 <nav>
                     <ul>
-                        <Link to="/tasks" className="tasklist link">課題一覧</Link>
-                        <Link to="#" className="helperlist link">お助け人一覧</Link>
+                        <Link to="/tasks" className="tasklist link">Competition</Link>
                     </ul>
                 </nav>
             </div>
@@ -45,8 +44,9 @@ const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
                     </div>
                 ) : (
                     <div>
-                        <Link to="/signin" className="signin button">ログイン</Link>
-                        <Link to="/signup" className="signup button">会員登録</Link>
+                        <Link to="/signup" className="signup">会員登録</Link>
+                        <Link to="/signin" className="signin">ログイン</Link>
+                        <Link to="/signup_corp" className="corp_login">企業の方はこちら</Link>
                     </div>
                 )}                
             </div>

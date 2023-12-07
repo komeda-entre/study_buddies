@@ -1,9 +1,7 @@
 /* Header.css */
 .header {
     background-color: white;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
+    height: 40px;
     align-items: center;
     width: 100%;
     margin: auto;
@@ -12,11 +10,12 @@
 .company-name-div{
     padding-left:40px;
     font-style: normal;
-    width: 20%;
 }
 .company-name{
-    color: #4169E1;
-    font-size: 10px;
+    margin-top: 4px;;
+    color: #515151;
+    float: left;
+    font-size: 12px;
     text-decoration: none;
 }
 h1 {
@@ -24,16 +23,9 @@ h1 {
     font-weight: bold;
 }
 
-.nav-section{
-    width: 55%;
-    /* height: 100%; */
-}
-.config_section{
-    width: 25%;
-}
+
 .tasklist {
     float: left;
-    margin-left: 17%;
     
 }
 
@@ -43,10 +35,10 @@ h1 {
 }
 
 .link {
-    font-weight: 400;
-    color: black;
-    font-family: ABeeZee;
-    font-size: 15px;
+    margin: 13px 0px 0px 60px;
+    color: #515151;
+    /* font-family: Crimson Text; */
+    font-size: 13px;
     font-style: normal;
     position: relative;
     line-height: normal;
@@ -58,43 +50,140 @@ h1 {
     left: -10%;
     content: '';
     height: 3px;
-    background: #4169E1;
+    background: #FFA500;
     position: absolute;
     width: 120%;
-    bottom: -15px;
+    bottom: -10px;
     visibility: hidden;
     opacity: 0;
 }
-
+.link:hover{
+    font-size: 13px;
+    font-weight: 700;
+}
 
 .link:hover::after {
     visibility: visible;
     opacity: 1;
     transition: 0.3s;
 }
+.corp_login{
+    margin-top: 6px;
+    font-size: 12px;
+    text-decoration: none;
+    float: right;
+    color: #515151;
+    margin-right: 30px;
+    padding: 5px;
+    border-bottom: 3px solid #D9D9D9;
+    /* 初期状態で透明 */
+    position: relative;
+    /* 疑似要素の基点 */
+    transition: color 0.3s;
+    /* 色の変化にトランジション */
+}
+.corp_login::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    background-color: #D9D9D9;
+    /* 下線の色 */
+    transition: width 0.3s;
+    /* 幅の変化にトランジション */
+}
 
+.corp_login:hover::after {
+    width: 100%;
+    /* ホバー時に幅を全体に */
+}
+
+.corp_login:hover {
+    font-weight: bold;
+    border-bottom: 0px solid #D9D9D9;
+    /* ホバー時にテキストの色を変更 */
+}
 .signin {
+    margin-top: 6px;
+    font-size: 12px;
     text-decoration: none;
     float: right;
-    background-color: #4169E1;
-    color: #fff;
-    margin-right: 40px;
-    padding: 5px 12px;
-    border-radius: 8px;
+    color: #515151;
+    margin-right: 30px;
+    padding: 5px;
+    border-bottom: 3px solid #FECF29;
+    /* 初期状態で透明 */
+    position: relative;
+    /* 疑似要素の基点 */
+    transition: color 0.3s;
+    /* 色の変化にトランジション */
 }
-.signup {
-    text-decoration: none;
-    margin-right: 40px;
-    float: right;
-    background-color: #4169E1;
-    color: #fff;
-    padding: 5px 12px;
-    border-radius: 8px;
 
+.signin::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    background-color: #FECF29;
+    /* 下線の色 */
+    transition: width 0.3s;
+    /* 幅の変化にトランジション */
 }
-.button:hover{
-    background-color: #4875FA;
+
+.signin:hover::after {
+    width: 100%;
+    /* ホバー時に幅を全体に */
 }
+
+.signin:hover {
+    font-weight: bold;
+    border-bottom: 0px solid #FECF29;
+    /* ホバー時にテキストの色を変更 */
+}
+
+.signup {
+    margin-top: 6px;
+    font-size: 12px;
+    text-decoration: none;
+    float: right;
+    color: #515151;
+    margin-right: 50px;
+    padding: 5px;
+    border-bottom: 3px solid #FFA500;
+    /* 初期状態で透明 */
+    position: relative;
+    /* 疑似要素の基点 */
+    transition: color 0.3s;
+    /* 色の変化にトランジション */
+}
+.signup::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    background-color: #FFA500;
+    /* 下線の色 */
+    transition: width 0.3s;
+    /* 幅の変化にトランジション */
+}
+
+.signup:hover::after {
+    width: 100%;
+    /* ホバー時に幅を全体に */
+}
+
+.signup:hover {
+    font-weight: bold;
+    border-bottom: 0px solid #FFA500;
+    /* ホバー時にテキストの色を変更 */
+}
+
 ul{
     margin: auto;
 }

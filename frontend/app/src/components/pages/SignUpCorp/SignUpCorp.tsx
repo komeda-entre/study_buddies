@@ -2,14 +2,13 @@ import { useState, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { signUp } from "lib/api/auth";
 import InputForm from "components/module/inputForm/InputForm";
-import './SignUp.css';
+import './SignUpCorp.css';
 import FlashMessage from "components/module/FlashMessage/FlashMessage";
 import Cookies from "js-cookie";
 
-const SignUp: React.FC = () => {
+const SignUpCorp: React.FC = () => {
 
     const [email, setEmail] = useState("");
-    const [university, setUniversity] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -22,22 +21,22 @@ const SignUp: React.FC = () => {
 
 
     const generateParams = () => {
-        const signUpParams = {
+        const signUpCorpParams = {
             name: name,
-            university: university,
             email: email,
+            university: null,
             password: password,
             passwordConfirmation: passwordConfirmation,
             confirmSuccessUrl: confirmSuccessUrl,
-            corporation: false,
+            corporation: true,
         };
-        return signUpParams;
+        return signUpCorpParams;
     };
 
-    const handleSignUpSubmit = async (e: FormEvent) => {
+    const handleSignUpCorpSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const params = generateParams();
-        const { name,  email, password, passwordConfirmation } = params;
+        const { name, email, password, passwordConfirmation } = params;
 
         let errors: string[] = [];
         setEmailError("")
@@ -47,8 +46,8 @@ const SignUp: React.FC = () => {
         setNameError("")
 
         if (!name) {
-            setNameError("アカウント名を入力してください")
-            errors.push('アカウント名を入力してください');
+            setNameError("企業名")
+            errors.push('メールアドレスを記入してください');
         }
         if (!email) {
             setEmailError("メールアドレスを入力してください")
@@ -89,22 +88,13 @@ const SignUp: React.FC = () => {
             <div className="signup_body">
                 <div className="signup_content">
                     <form className="signup_form">
-                        <h1>会員登録</h1>
+                        <h1>法人用会員登録</h1>
                         <div className="signup_name_form">
                             <InputForm
-                                labelName="アカウント名"
+                                labelName="企業名"
                                 name="name"
                                 value={name}
                                 onChange={setName}
-                                errorMessage={nameError}
-                            />
-                        </div>
-                        <div className="signup_university_form">
-                            <InputForm
-                                labelName="在籍大学名(任意)"
-                                name="university"
-                                value={university}
-                                onChange={setUniversity}
                                 errorMessage={nameError}
                             />
                         </div>
@@ -148,7 +138,7 @@ const SignUp: React.FC = () => {
                         <FlashMessage
                             errorMessage={submitError}
                         />
-                        <button type="submit" onClick={(e) => handleSignUpSubmit(e)} className="signupButton">
+                        <button type="submit" onClick={(e) => handleSignUpCorpSubmit(e)} className="signupButton">
                             登録
                         </button>
                     </form>
@@ -161,4 +151,4 @@ const SignUp: React.FC = () => {
     );
 };
 
-export default SignUp
+export default SignUpCorp

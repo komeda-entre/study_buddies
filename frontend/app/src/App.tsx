@@ -15,6 +15,7 @@ import SendResetMail from "components/pages/SendResetMail/SendResetMail"
 import PasswordReset from "components/pages/PasswordReset/PasswordReset"
 import SignUp from "components/pages/SignUp/SignUp"
 import UserConfirmation from "components/pages/UserConfirmation/UserConfirmation"
+import SignUpCorp from "components/pages/SignUpCorp/SignUpCorp"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -74,6 +75,7 @@ const App: React.FC = () => {
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
         <Routes>
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup_corp" element={<SignUpCorp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/" element={<Home />} />
           <Route path="/tasks" element={<IndexTasks />} />
