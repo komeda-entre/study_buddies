@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ isSignedIn, currentUser }) => {
             <div className="config_section">
                 {isSignedIn && currentUser ? (
                     <div>
-                        <Link to="/mypage" className="mypage">マイページ</Link>
+                        <Link to="/profile" className="mypage">プロフィール</Link>
                         <Link to="#" onClick={(e) => handleSignOutSubmit(e)} className="logout">ログアウト</Link>
                     </div>
                 ) : (

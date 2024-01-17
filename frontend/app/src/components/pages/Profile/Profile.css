@@ -1,0 +1,5 @@
+.responsive-image {
+    width: 50%;
+    /* または他のパーセンテージ */
+    height: auto;
+}

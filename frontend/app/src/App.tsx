@@ -16,6 +16,7 @@ import PasswordReset from "components/pages/PasswordReset/PasswordReset"
 import SignUp from "components/pages/SignUp/SignUp"
 import UserConfirmation from "components/pages/UserConfirmation/UserConfirmation"
 import SignUpCorp from "components/pages/SignUpCorp/SignUpCorp"
+import Profile from "components/pages/Profile/Profile"
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({} as {
@@ -90,6 +91,11 @@ const App: React.FC = () => {
           <Route path="/create_task" element={
             <PrivateRoute>
               <CreateTask />
+            </PrivateRoute>
+          } />
+          <Route path="/profile" element={
+            <PrivateRoute>
+              <Profile />
             </PrivateRoute>
           } />
         </Routes>

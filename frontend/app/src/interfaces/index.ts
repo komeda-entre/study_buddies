@@ -16,19 +16,33 @@ export interface SignInParams {
 
 // ユーザー
 export interface User {
+    university: string;
     id: number
     uid: string
     provider: string
     email: string
     name: string
     nickname?: string
-    image?: string
+    image?: {
+        url: string
+    }
     allowPasswordChange: boolean
     created_at: Date
     updated_at: Date
     admin: boolean
 }
-
+//Userアップデート
+export interface UserUpdateParams {
+    id: number
+    email: string
+    name: string
+    image?: {
+        url: string
+    }
+    university: string
+    password: string
+    passwordConfirmation: string
+}
 // 課題作成
 export interface TaskParams {
     title: string
